@@ -1,0 +1,460 @@
+*:not(dialog) {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(111, 111, 111);
+}
+li {
+    list-style: none;
+}
+button {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+button:hover {
+    transform: scale(1.05);
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    background: linear-gradient(135deg,rgb(104, 244, 247),rgb(251, 72, 48));
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(245, 71, 52, 0.566);
+    clip-path: circle(40% at right 120%);
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(125, 236, 231, 0.273);
+    clip-path: circle(35% at 15% -7%);
+}
+
+/* 
+
+userinfo area
+
+ */
+
+.userinfoBar {
+        /* size */
+        height: 100vh;
+        width: 350px;
+        /* location and layout */
+        position: absolute;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        /* shadow & background */
+        background-color: rgba(255, 255, 255, 0.218);
+        box-shadow: 15px 15px 25px rgba(0,0,0,0.2);
+
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+
+        backdrop-filter: blur(5px);
+
+        z-index: 1;
+}
+
+.userIcon {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.575);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    transition: all 0.3s;
+}
+
+.userIcon:hover {
+    transform: scale(1.3) rotate(360deg);
+}
+
+.userinfo {
+    height: 230px;
+    width: 300px;
+    transform: translate(0,-70px);
+    background-color: rgba(237, 107, 107, 0);
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    border-top: 1px solid rgb(136, 136, 136);
+    border-bottom: 1px solid rgb(136, 136, 136);
+}
+
+.userinfo input {
+    height: 35px;
+    padding-left: 10px;
+    font-size: 15px;
+    background-color: rgba(226, 226, 226, 0.351);
+    border-radius: 15px;
+}
+
+.userinfo *{
+    transition: all 0.3s;
+}
+
+.userinfo *:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.username {
+    font-size: 40px;
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.nickname {
+    font-size: 20px;
+    color: black;
+}
+
+.email {
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.changeInfoBtn {
+    display: none;
+    height: 40px;
+    width: 130px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 550;
+    font-size: 15px;
+
+    color: azure;
+    background-color: rgba(70, 192, 237, 0.334);
+    border-radius: 10px;
+
+    transition: all 0.2s;
+}
+
+.changeInfoBtn:hover {
+    width: 150px;
+    transform: translate(0px,2px);
+    background-color: rgba(232, 87, 54, 0.414);
+    cursor: pointer;
+}
+
+/* 
+
+dialog
+
+ */
+
+.dialog {
+    position: relative;
+    height: 300px;
+    width: 250px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-top: 1px solid rgba(74, 74, 74, 0.519);
+    border-left: 1px solid rgba(63, 63, 63, 0.578);
+    border-radius: 15px;
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.3);
+}
+
+.dialog::backdrop {
+    background-color: rgba(129, 129, 129, 0.592);
+}
+
+.dialogHeader {
+    height: 40px;
+    width: 250px;
+    background: linear-gradient(45deg,rgb(104, 244, 247),rgb(251, 72, 48));
+    color: white;
+    text-align: center;
+    line-height: 40px;
+}
+
+.dialogContent {
+    height: 210px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.dialogContent input {
+    display: block;
+    height: 35px;
+    padding-left: 10px;
+    font-size: 15px;
+    background-color: rgba(226, 226, 226, 0.351);
+    color: black;
+    border-radius: 15px;
+}
+
+.dialogFooter {
+    position: absolute;
+    top: 260px;
+    height: 50px;
+    width: 250px;
+    border-top: 1px solid rgb(194, 194, 194);
+    text-align: center;
+    line-height: 40px;
+}
+
+.dialogBtn {
+    height: 21px;
+    margin: 10px;
+    width: 80px;
+    border-radius: 15px;
+    color: white;
+}
+
+#pwdBtn_y {
+    background-color: rgb(148, 255, 86);
+}
+
+#pwdBtn_n {
+    background-color: rgb(249, 52, 52);
+}
+
+.changePwdBtn {
+    position: fixed;
+    top: 540px;
+    left: 220px;
+    font-size: 12px;
+    color: rgb(159, 159, 159);
+    cursor: pointer;
+
+    transition: all 0.2s;
+}
+
+.changePwdBtn:hover {
+    color: white;
+}
+
+/* 
+
+cateAndartArea
+
+ */
+
+ .cateAndartArea {
+    /* size */
+    height: 100vh;
+    width: calc(74% - 1px);
+    padding: 60px;
+    /* location and layout */
+    position: absolute;
+    left: 400px;
+    background-color: rgba(255, 255, 255, 0.234);
+    box-shadow: 15px 15px 25px rgba(0,0,0,0.2);
+
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+    backdrop-filter: blur(15px);
+
+    z-index: 1;
+}
+
+.optionBar {
+    position: relative;
+    height: 30px;
+
+    border-bottom: 1px solid rgb(136, 136, 136);
+}
+
+.option {
+    position: relative;
+    padding: 3px 20px 1px;
+    margin-top: 2px;
+    margin-right: 5px;
+
+    font-size: 18px;
+    float: left;
+
+    background-color: transparent;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+
+    transition: all 0.3s;
+}
+
+.option:hover {
+    background-color: rgba(255, 255, 255, 0.349);
+    /* background: linear-gradient(45deg,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.479)); */
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+    cursor: pointer;
+}
+
+.artcates {
+    overflow: hidden;
+    position: relative;
+    top: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.427);
+    border-top: 1px solid rgba(255, 255, 255, 0.367);
+    border-radius: 8px;
+}
+
+.addcate {
+    position: relative;
+    top: 20px;
+    left: 1000px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    line-height: 15px;
+    color: white;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: all 0.3s;
+}
+
+.addcate:hover {
+    transform: scale(1.2);
+}
+
+.catelist {
+    height: 30px;
+    border-bottom: 1px solid rgba(146, 146, 146, 0.593);
+
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.catelist:hover {
+    box-shadow: 2px 1px 8px white inset;
+}
+
+.catelist li {
+    height: 30px;
+    width: 337px;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+}
+
+.editBtn {
+    width: 50px;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: rgb(53, 255, 27);
+    color: aliceblue;
+    text-align: center;
+}
+
+.deleteBtn {
+    width: 50px;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: rgb(255, 51, 51);
+    color: aliceblue;
+    text-align: center;
+}
+
+#artcateBtn_y {
+    background-color: rgb(53, 255, 27);
+}
+
+#artcateBtn_n {
+    background-color: rgb(255, 51, 51);
+}
+
+/* writing article area */
+.articles {
+    position: relative;
+    top: 10px;
+    height: 630px;
+    width: 1010px;
+    padding: 30px;
+    /* text-align: center; */
+    background-color:rgba(255, 255, 255, 0.55);
+
+    border-radius: 15px;
+    box-shadow: 5px 5px 16px rgb(255, 255, 255) inset;
+}
+
+.title {
+    width: 950px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+    color: black;
+    background-color: transparent;
+}
+
+.artInfoBar {
+    width: 950px;
+    text-align: center;
+    padding-bottom: 4px;
+    border-bottom: 1px solid grey;
+}
+
+.art_cate {
+    width: 130px;
+    font-size: 15px;
+    background-color: transparent;
+}
+
+.sci {
+    display: inline;
+    font-size: 10px;
+    color: rgb(157, 157, 157);
+}
+
+.art_cover {
+    width: 167px;
+}
+
+.content {
+    margin-top: 10px;
+    width: 950px;
+    height: 480px;
+    font-size: 15px;
+    color: black;
+    background-color: transparent;
+}
+
+.publishBtn {
+    position: relative;
+    left: 890px;
+    height: 20px;
+    padding-left: 4px;
+    padding-right: 4px;
+    color:white;
+    font-size: 10px;
+    background-color: rgb(252, 93, 35);
+    border-radius: 5px;
+}

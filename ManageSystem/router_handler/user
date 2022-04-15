@@ -1,0 +1,55 @@
+const db=require('../db/index');
+const bcryptjs=require('bcryptjs');
+const jwt=require('jsonwebtoken');
+const config=require('../config');
+
+//define handler functions
+exports.register=(req,res)=>{
+    //if username exists
+    db.query('select * from userinfo where username=?',req.body.username,(err,results)=>{
+        if(err) 
+            return res.cc(err);
+        if(results.length>0)
+            return res.cc("username already exists!");
+        let bcryptPassword=bcryptjs.hashSync(req.body.password,10);
+        
+        //insert new user
+        let sql='insert into userinfo (username,password,email) values(?,?,?)';
+        db.query(sql,[req.body.username,bcryptPassword,req.body.email],(err,results)=>{
+            if(err) 
+                return res.cc(err);
+            if(results.affectedRows!=1)
+                return res.cc("register failed! please try again later!");
+            res.cc("register success!",0);
+        })
+    })
+}
+
+exports.login=(req,res)=>{
+    //if username exist
+    db.query('select * from userinfo where username=?',req.body.username,(err,results)=>{
+        if(err)
+            return res.cc(err);
+        if(results.length!=1)
+            return res.cc("username not found!");
+        
+        //if password correct
+        if(!bcryptjs.compareSync(req.body.password,results[0].password))
+            return res.cc("password incorrect!");
+
+        //generate Token
+        const user={...results[0],password:'',user_pic:''};
+        const tokenStr=jwt.sign(user,config.jwtSecretKey,{expiresIn:config.expiresIn});
+
+        res.send({
+            status:0,
+            msg:"login success!",
+            token:"Bearer "+tokenStr,
+            userinfo:{
+                username:results[0].username,
+                nickname:results[0].nickname,
+                email:results[0].email
+            }
+        })
+    })
+}

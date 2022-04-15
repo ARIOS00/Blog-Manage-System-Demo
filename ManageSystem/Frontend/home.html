@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>home</title>
+        <meta name="description" content="manage system based on Node"/>
+        <meta name="keywords" content="1,1,1"/>
+        <link rel="stylesheet" href="http://127.0.0.1:2000/CSS/home.css">
+        <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.js"></script>
+    </head>
+    <body>
+        <!-- change pwd dialog -->
+        <dialog class="dialog" id="dialogPwd">
+            <div class="dialogHeader">Change Password</div>
+            <div class="dialogContent">
+                <input type="password" id="oldPwd" placeholder="old password">
+                <input type="password" id="newPwd" placeholder="new password">
+            </div>
+            <div class="dialogFooter">
+                <button class="dialogBtn" id="pwdBtn_y">Confirm</button>
+                <button class="dialogBtn" id="pwdBtn_n">Cancel</button>
+            </div>
+        </dialog>
+
+        <!-- update artcate dialog -->
+        <dialog class="dialog" id="dialogArtcate">
+            <div class="dialogHeader" id="dialogHeader"></div>
+            <div class="dialogContent">
+                <input type="text" id="dialogArtcate_name" placeholder="name">
+                <input type="text" id="dialogArtcate_alias" placeholder="alias">
+            </div>
+            <div class="dialogFooter">
+                <button class="dialogBtn" id="artcateBtn_y">Confirm</button>
+                <button class="dialogBtn" id="artcateBtn_n">Cancel</button>
+            </div>
+        </dialog>
+
+        <div class="userinfoBar">
+            <img src="https://vignette.wikia.nocookie.net/warframe/images/4/46/Stalker_avatar.png/revision/latest?cb=20140806070139&path-prefix=ru" class="userIcon" alt="">
+            <div class="userinfo" id="userinfo">
+                <div class="username"></div>
+                <div class="nickname"></div>
+                <div class="email"></div>
+                <button class="changeInfoBtn" id="changeInfoBtn">Apply Changes</button>
+            </div>
+            <div class="changePwdBtn" id="changePwdBtn">Change Password</div>            
+        </div>
+            
+        <div class="cateAndartArea">
+            <ul class="optionBar" id="optionBar">
+                <li class="option" id="catalogsBtn">categories</li>
+                <li class="option" id="articlesBtn">articles</li>
+            </ul>
+            <!-- category area -->
+            <div class="artcates" id="artcates">
+            </div>
+            <div class="addcate" id="addcateBtn">+</div>
+            <!-- article area -->
+            <div class="articles" id="articles">
+                <input type="text" class="title" id="title" placeholder="Title">
+                <div class="artInfoBar">
+                    <input type="text" class="art_cate" id="art_cate" placeholder="input category">
+                    <div class="sci">cover image</div>
+                    <input type="file" class="art_cover" id="art_cover" name="cover_img">
+                </div>
+                <textarea class="content" id="content" cols="30" rows="10">Input your content</textarea>
+                <button class="publishBtn" id="publishBtn">Publish</button>
+            </div>
+        </div>
+    </body>
+    <script src="http://127.0.0.1:2000/JS/home.js"></script>
+</html>
